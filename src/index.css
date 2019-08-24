@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+form > div {
+  margin: auto 3px;
+}
+input,
+select {
+  transition: all 0.15s ease-out;
+  border: 1px solid #ddd;
+  padding: 10px 14px;
+  outline: none;
+  font-size: 14px;
+  color: #666;
+}
+input:hover,
+select:hover {
+  border: 1px solid #c6279f;
+}
+select {
+  cursor: pointer;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+button {
+  transition: all 0.15s ease-out;
+  background: #145269;
+  border: 1px solid #ddd;
+  padding: 10px 35px;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+button:hover {
+  color: #145269;
+  background: #fff;
+  border: 1px solid #145269;
+}
+button:active {
+  background: rgb(27, 71, 110);
+  border: 1px solid #a1a1a1;
+  color: #fff;
+}
+
+.teal-border {
+  border: 1px solid #467b8f;
+}
+.hotpink-border {
+  border: 1px solid #c1247d;
+}
+
+.boxes {
+  margin: 10px 0;
+  padding: 3px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.box {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.box-name {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.box.gender-container {
+  position: relative;
+}
+
+.box img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
