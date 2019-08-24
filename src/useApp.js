@@ -3,21 +3,39 @@ import { useReducer } from 'react'
 const initialState = {
   friends: [],
   history: [],
+  theme: 'light',
+}
+
+const insertToHistory = (state) => {
+  if (state && Array.isArray(state.history)) {
+    // Do not mutate
+    const newHistory = [...state.history]
+    newHistory.push(state)
+    return newHistory
+  }
+  console.warn(
+    'WARNING! The state was attempting capture but something went wrong. Please check if the state is controlled correctly.',
+  )
+  return state.history || []
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'set-theme':
+      return { ...state, theme: action.theme, history: insertToHistory(state) }
     case 'add-friend':
       return {
         ...state,
         friends: [...state.friends, action.friend],
-        history: [...state.history, state],
+        history: insertToHistory(state),
       }
     case 'undo': {
       const isEmpty = !state.history.length;
       if (isEmpty) return state
       return { ...state.history[state.history.length - 1] }
     }
+    case 'reset':
+      return { ...initialState, history: insertToHistory(state)}
     default:
       return state
   }
@@ -25,18 +43,28 @@ const reducer = (state, action) => {
 
 const useApp = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const onSubmit = friend => e => {
+  const onSubmit = (friend, reset) => e => {
     e.preventDefault()
     if (!friend.name) return;
     dispatch({ type: 'add-friend', friend})
+    reset()
   }
   const undo = () => {
     dispatch({ type: 'undo' })
   }
+  const reset = () => {
+    dispatch({ type: 'reset' })
+  }
+  const onThemeChange = (e) => {
+    dispatch({ type: 'set-theme', theme: e.target.value })
+  }
+
   return {
     ...state,
     onSubmit,
     undo,
+    onThemeChange,
+    reset,
   }
 }
 

@@ -52,11 +52,14 @@ button:active {
   color: #fff;
 }
 
-.teal-border {
+.male-border {
   border: 1px solid #467b8f;
 }
-.hotpink-border {
+.female-border {
   border: 1px solid #c1247d;
+}
+.other-border {
+  border: 2px solid #0f0;
 }
 
 .boxes {
@@ -81,16 +84,46 @@ button:active {
 
 .box-name {
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 50px;
 }
 
-.box.gender-container {
+.gender-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.box img {
+img {
   object-fit: cover;
-  width: 200px;
-  height: 200px;
+  width: 99%;
+  height: 99%;
+}
+
+.theme-light,
+.theme-dark {
+  box-sizing: border-box;
+  transition: all 0.15s ease-out;
+  padding: 12px;
+  min-height: 100vh;
+}
+
+.theme-light {
+  color: #145269;
+  background: #fff;
+}
+
+.theme-dark {
+  color: #fff;
+  background: #0b2935;
+}
+
+.undo-actions {
+  display: flex;
+  align-items: center;
+}
+.undo-actions > div {
+  margin: auto 3px;
 }
